@@ -1,0 +1,37 @@
+@font-face{
+    font-family: 'Drip';
+    src: url('fonts/vtks-ink.regular.ttf') format('truetype');
+    font-weight: normal;
+}
+header{
+    display: flex;
+    border-top-right-radius: 12px;
+    justify-content: space-around;
+    align-items: center;
+    height: 10%;
+    width: 100%;
+    background-color: rgb(105, 105, 105);
+}
+
+.Titles-container{
+    width: 50%;
+}
+
+
+input{
+    height: 30px;
+    margin: 2.5rem;
+    width: 50%;
+}
+
+
+.HeaderTitle__Drip{
+    font-family: 'Drip';
+    color: white;
+    font-size: 50px;
+}
+
+.HeaderTitle__Jordans{
+    font-family: 'Drip';
+    color: white;
+}
