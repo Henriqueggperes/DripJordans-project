@@ -3,11 +3,13 @@ import 'Header.css';
 export default function Header() {
  return(
  <header>
-    <div className='Titles-container'>
-     <h1 className="HeaderTitle__Drip Title"> DRIP </h1>
-     <h2 className="HeaderTitle__Jordans Title"> <i>JORDANS</i></h2>
-    </div>
-    <input type="search"/>
+    <div className='HeaderTitle-container'>
+     <span className="HeaderTitle__Drip Title"> DRIP </span>
+     <span className="HeaderTitle__Jordans Title"> <i>JORDANS</i></span>
+    </div> 
+    <div className='HeaderInput-container'>
+    <input type="text"/>
+    </div>  
  </header>
 )
 } 
