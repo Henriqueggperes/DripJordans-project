@@ -5,7 +5,7 @@ export default function Header() {
  <header>
     <div className='HeaderTitle-container'>
      <span className="HeaderTitle__Drip Title"> DRIP </span>
-     <span className="HeaderTitle__Jordans Title"> <i>JORDANS</i></span>
+     <span className="HeaderTitle__Jordans Title"> JORDANS</span>
     </div> 
     <div className='HeaderInput-container'>
     <input type="text"/>
