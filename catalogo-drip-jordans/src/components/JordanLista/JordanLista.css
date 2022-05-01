@@ -2,9 +2,10 @@
 
 .JordanLista {
     display: grid;
-    padding-top: 10px;
+    padding-top: 30px;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 25px 50px;
+    grid-auto-flow: row;
   }
   
   @media (max-width: 1220px) {
@@ -96,9 +97,12 @@
     margin-right: -50px;
   }
   .JordanListaItem__badge {
-    background-color: rgb(0, 0, 0);
-    width: 20px;
-    height: 20px;
+    background-color: #000000b0;
+    width: 15px;
+    height: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
     text-align: center;
     vertical-align: middle;
     position: absolute;
