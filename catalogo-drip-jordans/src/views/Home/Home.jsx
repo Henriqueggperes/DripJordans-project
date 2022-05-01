@@ -1,4 +1,4 @@
-import "components/Home/Home.css";
+import "views/Home/Home.css";
 import Header from "components/Header/Header";
 import JordanLista from "components/JordanLista/JordanLista";
 
