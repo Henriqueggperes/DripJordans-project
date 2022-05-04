@@ -2,10 +2,22 @@ import { Jordans } from "mocks/Jordans";
 import "components/JordanLista/JordanLista.css";
 import JordanListaItem from "components/JordanListaItem/JordanListaItem";
 import React, { useState } from "react";
+import JordanDetalhesModal from "components/JordanDetalhesModal/JordanDetalhesModal"
 
 function JordanLista() {
-  const [jordanSelecionado, setJordanSelecionado] = useState({});
+  const Jordans = [
+    {
+        titulo: "Nike Air Jordan- Branco sujo",
+        descricao:
+          "Quam vulputate dignissim suspendisse in est ante in nibh mauris.",
+        foto: require("assets/images/jordan-mid.png"),
+        ano:  2017,
+        preco: 400
+      }
+]
 
+  const [jordanSelecionado, setJordanSelecionado] = useState({});
+  const [jordanModal,setJordanModal] = useState();
   const adicionarItem = (jordanIndex) => {
     const jordan = {
       [jordanIndex]: Number(jordanSelecionado[jordanIndex] || 0) + 1,
@@ -45,9 +57,12 @@ function JordanLista() {
         onRemove = {(index)=> removerItem(index)}
         onAdd = {(index)=> adicionarItem(index)}
          />
+        
       ))}
+      <JordanDetalhesModal jordan = {Jordans}
+        closeModal={() => setJordanModal(false)} />
     </div>
   );
 }
 
-export default JordanLista;
+export default JordanLista
