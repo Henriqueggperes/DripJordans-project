@@ -59,8 +59,6 @@ function JordanLista() {
          />
         
       ))}
-      <JordanDetalhesModal jordan = {Jordans}
-        closeModal={() => setJordanModal(false)} />
     </div>
   );
 }
