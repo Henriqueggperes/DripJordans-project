@@ -1,5 +1,5 @@
 import "components/Header/Header.css";
-import sacola from "assets/icons/sacola.svg";
+import sacola from "assets/icons/sacola.png";
 export default function Header() {
   return (
     <header>
