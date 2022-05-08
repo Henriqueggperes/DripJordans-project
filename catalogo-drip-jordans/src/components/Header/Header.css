@@ -12,7 +12,16 @@ header{
     width: 100%;
     
 }
-
+@media(max-width: 840px){
+    .Header {
+        max-width: 320px;
+    }
+    .row {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+      }
+}
 .HeaderTitle--container{
     display: flex;
     flex-direction: column;
@@ -38,8 +47,8 @@ header{
 
 }
 .HeaderIcon__Sacola{
-    height: 60%;
-    width: 30%;
+    height: 40px;
+    width: 30px;
 }
 
 
@@ -69,3 +78,16 @@ header{
  font-style: oblique;
  
  }
+
+ .Opcoes {
+    display: flex;
+  }
+  
+  .Jordan {
+    background: none;
+    border: none;
+  }
+  
+  .Jordan__icone {
+    cursor: pointer;
+  }

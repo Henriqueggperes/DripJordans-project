@@ -14,12 +14,15 @@ const transformJordan = (jordan) =>{
 const parseTransformLista = (response) =>
   parseResponse(response).then((jordans) => jordans.map(transformJordan));
 
+  const parseTransformItem = (response) =>
+  parseResponse(response).then(transformJordan);
+
 export const JordanService = {
     getLista : () =>
     fetch(Api.jordanLista(),{method: "GET"}).then(parseTransformLista),
     
     getById: (id) => 
-    fetch(Api.jordanById(id),{method: "GET"}).then(parseTransformLista),
+    fetch(Api.jordanById(id),{method: "GET"}).then(parseTransformItem),
     
     updateById: (id) => 
     fetch(Api.updateJordanById(id),{method: "PUT"}).then(parseTransformLista),

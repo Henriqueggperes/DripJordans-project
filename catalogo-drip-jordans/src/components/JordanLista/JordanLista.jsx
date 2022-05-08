@@ -9,7 +9,7 @@ function JordanLista() {
   
   const [jordans, setJordan] = useState([]);
   const [jordanSelecionado, setJordanSelecionado] = useState({});
-  const [jordanModal, setJordanModal] = useState(true);
+  const [jordanModal, setJordanModal] = useState(false);
  
   // const [jordanModal,setJordanModal] = useState();
   const adicionarItem = (jordanIndex) => {
@@ -30,9 +30,15 @@ function JordanLista() {
     const response = await JordanService.getLista();
     setJordan (response); 
   }
+  const getJordanById = async (jordanId) => {
+    const response = await JordanService.getById(jordanId);
+    setJordanModal (response); 
+  }
   useEffect(()=>{
     getLista();
   },[]);
+
+
 
   const badgeCounter = (canRender, index) =>
     Boolean(canRender) && (
@@ -57,7 +63,7 @@ function JordanLista() {
         index = {index}
         onRemove = {(index)=> removerItem(index)}
         onAdd = {(index)=> adicionarItem(index)}
-        clickItem = {(jordanId)=> setJordanModal(jordan)}
+        clickItem = {(jordanId)=> getJordanById(jordanId)}
         />
         
          ))}

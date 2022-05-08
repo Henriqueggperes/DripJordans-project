@@ -1,6 +1,8 @@
 import "components/Header/Header.css";
 import sacola from "assets/icons/sacola.png";
-export default function Header() {
+import shoe from "assets/icons/shoe.png"
+
+export default function Header(createJordan,) {
   return (
     <header>
       <div className="HeaderTitle--container">
@@ -10,6 +12,9 @@ export default function Header() {
       <div className="HeaderInput--container">
         <input type="text" className="HeaderInput" />
       </div>
+      <button type="button" className="Opcoes__jordan Jordan" onClick={()=> createJordan()}>
+        <span className="Jordan__icone"><b>ADD JORDAN</b></span>
+      </button>
       <div className="HeaderIcon--container">
         <img
           src={sacola}
