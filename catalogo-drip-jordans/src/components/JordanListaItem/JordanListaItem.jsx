@@ -1,6 +1,6 @@
 import "components/JordanListaItem/JordanListaItem.css";
 
-function JordanListaItem({jordan,quantidadeSelecionada,index,onRemove,onAdd}) {
+function JordanListaItem({jordan,quantidadeSelecionada,index,onRemove,onAdd,clickItem}) {
 	
   const badgeCounter = (canRender, index) =>
     Boolean(canRender) && (
@@ -8,13 +8,13 @@ function JordanListaItem({jordan,quantidadeSelecionada,index,onRemove,onAdd}) {
     );
   const removeButton = (canRender, index) =>
     Boolean(canRender) && (
-      <button className="Acoes__remover" onClick={() => onRemove(index)}>
+      <button className="Acoes__remover" onClick={(e) =>{e.stopPropagation();onRemove(index);}}>
         REMOVER
       </button>
     );
 
   return (
-    <div className="JordanListaItem">
+    <div className="JordanListaItem" onClick={()=>clickItem(jordan.id)}>
       {badgeCounter(quantidadeSelecionada[index], index)}
       <div>
         <div className="JordanListaItem__titulo">{jordan.titulo}</div>
@@ -28,7 +28,7 @@ function JordanListaItem({jordan,quantidadeSelecionada,index,onRemove,onAdd}) {
             className={`Acoes__adicionar ${
               !quantidadeSelecionada[index] && "Acoes__adicionar--preencher"
             }`}
-            onClick={() => onAdd(index)}
+            onClick={(e) => {e.stopPropagation(); onAdd(index);}}
           >
             ADICIONAR
           </button>

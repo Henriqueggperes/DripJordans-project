@@ -2,7 +2,7 @@ import './Modal.css';
 
 import Overlay from 'components/Overlay/Overlay'
 
-function Modal(children, closeModal) {
+function Modal({children, closeModal}) {
     const handleClick = (e, canClose) =>{
         e.stopPropagation();
         if(canClose) closeModal();
@@ -11,7 +11,7 @@ function Modal(children, closeModal) {
      <Overlay overlayClick = {closeModal}>
       <div className="Modal" onClick={handleClick}>
        <span className="Modal__close" onClick={(e)=>handleClick(e,true)}>+</span>
-       <div className="Modal__Body">{children}</div>
+       <div className="Modal__body">{children}</div>
       </div>
       </Overlay>
     );

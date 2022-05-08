@@ -1,6 +1,6 @@
 .JordanDetalhesModal {
     font-family: "Exo";
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(68, 68, 68, 0.3);
     border-radius: 10px;
     padding: 10px 0px 10px 10px;
     max-height: 350px;
@@ -11,7 +11,7 @@
     position: relative;
   }
   
-  .JordanDetalhesModal > div {
+  .JordanDetalhesModal-container{
     display: flex;
     justify-content: space-between;
     flex-direction: column;
@@ -28,12 +28,14 @@
   }
   
   .JordanDetalhesModal__preco {
-    color: darkviolet;
+    color: rgb(0, 0, 0);
     font-size: 2.5em;
   }
   
   .JordanDetalhesModal__foto {
-    margin-right: -100px;
+    height: 60%;
+    width: 60%;
+    margin-right: -50px;
     z-index: 0;
   }
   
@@ -44,8 +46,8 @@
     }
   
     .JordanDetalhesModal__foto {
-      height: 250px;
-      margin-top: 50px;
+      height: 100px;
+      margin-top: 1px;
       margin-right: -100px;
     }
   
