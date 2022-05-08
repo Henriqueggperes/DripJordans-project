@@ -19,7 +19,7 @@ function AdicionaJordanModal({ closeModal }) {
         <form autoComplete="false">
           <h2>Adicionar ao Catálogo</h2>
           <div>
-            <label className="AdicionaJordanModal__text" htmlFor="">
+            <label className="AdicionaJordanModal__text" htmlFor="preco">
               Preço
             </label>
             <input
@@ -31,51 +31,59 @@ function AdicionaJordanModal({ closeModal }) {
             />
           </div>
           <div>
-            <label className="AdicionaJordanModal__text" htmlFor="">
-              Preço
+            <label className="AdicionaJordanModal__text" htmlFor="titulo">
+              Nome
             </label>
             <input
-              id="preco"
+              id="titulo"
               type="text"
-              placeholder="R$ 200,00"
+              placeholder="ex: Air Jordan Oyester Grey"
               value={state.titulo}
-              onChange={(e) => handleChange(e, "preco")}
+              onChange={(e) => handleChange(e, "titulo")}
             />
           </div>
           <div>
-            <label className="AdicionaJordanModal__text" htmlFor="">
-              Preço
+            <label className="AdicionaJordanModal__text" htmlFor="ano">
+              Ano
             </label>
             <input
-              id="preco"
+              id="ano"
               type="text"
-              placeholder="R$ 200,00"
-              value={state.foto}
-              onChange={(e) => handleChange(e, "preco")}
+              placeholder="ex:2021"
+              value={state.ano}
+              onChange={(e) => handleChange(e, "ano")}
             />
           </div>
           <div>
-          <label className="AdicionaJordanModal__text" htmlFor="">
-              Preço
+            <label className="AdicionaJordanModal__text" htmlFor="descricao">
+              Descrição
             </label>
-            <input 
-             id="preco"
-             type="text" 
-             placeholder="R$ 200,00"
-             value={state.ano} 
-            onChange={(e) => handleChange(e,'preco')}/>
+            <input
+              id="descricao"
+              type="text"
+              placeholder="ex: Tenis muito bom haha"
+              value={state.descricao}
+              onChange={(e) => handleChange(e, "descricao")}
+            />
           </div>
           <div>
-          <label className="AdicionaJordanModal__text" htmlFor="">
-              Preço
+            <label className="AdicionaJordanModal__text AdicionaPaletaModal__foto-label" htmlFor="foto">
+            {!state.foto.length? 'Selecionar Imagem' : state.foto}
             </label>
-            <input 
-             id="preco"
-             type="text" 
-             placeholder="R$ 200,00"
-             value={state.descricao} 
-            onChange={(e) => handleChange(e,'preco')}/>
+            <input
+            className=" AdicionaPaletaModal__foto"
+              id="foto"
+              type="file"
+              accept="image/png, image/gif, image/jpeg"
+              value={state.foto}
+              onChange={(e) => handleChange(e, "foto")}
+            />
           </div>
+          <input 
+          className="AdicionaJordanModal__enviar"
+          type="submit" 
+          value="Enviar"
+          />
         </form>
       </div>
     </Modal>
