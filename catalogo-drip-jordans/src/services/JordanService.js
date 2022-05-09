@@ -30,7 +30,9 @@ export const JordanService = {
     deleteById: (id) => 
     fetch(Api.deleteBootById(id),{method: "DELETE"}).then(parseTransformLista),
     
-    createJordan: () => 
-    fetch(Api.createJordan(),{method: "POST"}).then(parseTransformLista),
+    createJordan: (jordan) => 
+    fetch(Api.createJordan(),{method: "POST", body:JSON.stringify(jordan), mode: "cors", headers:{
+        "Content-Type": "application/json",
+    }}).then(parseTransformItem),
 
 }
