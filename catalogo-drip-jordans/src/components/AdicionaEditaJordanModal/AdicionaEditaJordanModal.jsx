@@ -1,25 +1,27 @@
 import { useState, useEffect } from "react";
-import "./AdicionaJordanModal.css";
 import { JordanService } from "services/JordanService";
+import { ActionMode } from "constants/index";
+import "./AdicionaEditaJordanModal.css";
 import Modal from "components/Modal/Modal";
-function AdicionaJordanModal({ closeModal, onCreateJordan }) {
+function AdicionaEditaJordanModal({ closeModal, onCreateJordan, mode, jordanToUpdate, onUpdateJordan }) {
   const form = {
-    preco: "",
-    nome: "",
-    ano: "",
-    descricao: "",
-    foto: "",
-  };
+    preco: jordanToUpdate?.preco ?? '',
+    nome: jordanToUpdate?.nome ?? '',
+    ano: jordanToUpdate?.ano ?? '',
+    descricao: jordanToUpdate?.descricao ?? '',
+    foto: jordanToUpdate?.foto ?? '',
+  }
   const [state, setState] = useState(form);
   const handleChange = (e, name) => {
     setState({ ...state, [name]: e.target.value });
   };
   const [canDisable, setCanDisable] = useState(true);
+  
   const canDisableSendButton = () => {
     const response = !Boolean(
-      state.descricao.length &&
+        state.descricao.length &&
         state.foto.length &&
-        state.preco.length &&
+        String(state.preco).length &&
         state.ano.length &&
         state.nome.length
     );
@@ -30,13 +32,14 @@ function AdicionaJordanModal({ closeModal, onCreateJordan }) {
   })
 
 
-  const createJordan = async () => {
-    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split('\\').pop();
+  const handleSend = async () => {
+    const renomeiaCaminhoFoto = (fotoPath) => fotoPath.split(/\\|\//).pop();
 
     const { nome, ano, descricao, preco, foto } = state;
-
-  
+    
+    
     const jordan = {
+      ...(jordanToUpdate && { _id: jordanToUpdate?.id }),
         nome,
         ano,
         descricao,
@@ -44,9 +47,29 @@ function AdicionaJordanModal({ closeModal, onCreateJordan }) {
         foto: `assets/images/${renomeiaCaminhoFoto(foto)}`
     }
 
-    const response = await JordanService.createJordan(jordan);
-    
-    onCreateJordan(response);
+    const serviceCall = {
+      [ActionMode.NORMAL]: () => JordanService.create(jordan),
+      [ActionMode.ATUALIZAR]: () => JordanService.updtateById(jordanToUpdate?.id, jordan),
+    }
+
+    const response = await serviceCall[mode]();
+
+    const actionResponse = {
+      [ActionMode.NORMAL]: () => onCreateJordan(response),
+      [ActionMode.ATUALIZAR]: () => onUpdateJordan(response),
+    }
+
+    actionResponse[mode]();
+
+    const reset = {
+      preco: '',
+      nome: '',
+      ano: '',
+      descricao: '',
+      foto: '',
+    }
+
+    setState(reset);
 
     closeModal();
   }
@@ -55,7 +78,7 @@ function AdicionaJordanModal({ closeModal, onCreateJordan }) {
     <Modal closeModal={closeModal}>
       <div className="AdicionaJordanModal">
         <form autoComplete="off">
-          <h2>Adicionar ao Catálogo</h2>
+        <h2> { ActionMode.ATUALIZAR === mode ? 'Atualizar' : 'Adicionar ao' } Catálogo </h2>
           <div>
             <label className="AdicionaJordanModal__text" htmlFor="preco">
               Preço
@@ -120,7 +143,6 @@ function AdicionaJordanModal({ closeModal, onCreateJordan }) {
               id="foto"
               type="file"
               accept="image/png, image/gif, image/jpeg"
-              value={state.foto}
               onChange={(e) => handleChange(e, "foto")}
               required
             />
@@ -129,10 +151,8 @@ function AdicionaJordanModal({ closeModal, onCreateJordan }) {
             className="AdicionaJordanModal__enviar"
             type="button"
             disabled = {canDisable}
-            onClick = {()=>createJordan()}
-
-            >
-              Enviar
+            onClick = {()=>handleSend()} >
+            { ActionMode.ATUALIZAR === mode ? 'Atualizar' : 'Enviar' }
             </button>
         </form>
       </div>
@@ -140,4 +160,4 @@ function AdicionaJordanModal({ closeModal, onCreateJordan }) {
   );
 }
 
-export default AdicionaJordanModal;
+export default AdicionaEditaJordanModal;

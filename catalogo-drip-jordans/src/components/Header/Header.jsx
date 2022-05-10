@@ -1,8 +1,9 @@
+import { ActionMode } from "constants/index";
+
 import "components/Header/Header.css";
 import sacola from "assets/icons/sacola.png";
-import shoe from "assets/icons/shoe.png"
 
-export default function Header({createJordan}) {
+export default function Header({ createJordan, updateJordan, mode }) {
   return (
     <header>
       <div className="HeaderTitle--container">
@@ -12,8 +13,25 @@ export default function Header({createJordan}) {
       <div className="HeaderInput--container">
         <input type="text" className="HeaderInput" />
       </div>
-      <button type="button" className="Opcoes__jordan Jordan" onClick={() => createJordan()}>
-        <span className="Jordan__icone"><b>ADD JORDAN</b></span>
+      <button
+        type="button"
+        className="Opcoes__jordan Jordan"
+        onClick={() => createJordan()}
+      >
+        <span className="Jordan__icone-Add Icone">
+          <b>ADD JORDAN</b>
+        </span>
+      </button>
+      <button
+        type="button"
+        className={`Opcoes__jordan Jordan ${
+          mode === ActionMode.ATUALIZAR && "Jordan--ativa"
+        }`}
+        onClick={() => updateJordan()}
+      >
+        <span className="Jordan__icone-Update Icone">
+          <b>UPDATE JORDAN</b>
+        </span>
       </button>
       <div className="HeaderIcon--container">
         <img
