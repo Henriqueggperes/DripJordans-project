@@ -48,7 +48,7 @@ function AdicionaEditaJordanModal({ closeModal, onCreateJordan, mode, jordanToUp
     }
 
     const serviceCall = {
-      [ActionMode.NORMAL]: () => JordanService.create(jordan),
+      [ActionMode.NORMAL]: () => JordanService.createJordan(jordan),
       [ActionMode.ATUALIZAR]: () => JordanService.updtateById(jordanToUpdate?.id, jordan),
     }
 

@@ -41,7 +41,7 @@
 }
 
 .JordanListaItem__tag {
-  background-color: rgb(0, 0, 0) !important;
+  background-color: rgb(48, 97, 132) !important;
   color: white !important;
   position: absolute;
   font-size: 0.6em;
@@ -132,4 +132,11 @@
   border-radius: 40%;
   top: -9px;
   left: -9px;
+}
+.JordanListaItem--deletar {
+  box-shadow: 0px 0px 7px rgb(93, 3, 3);
+}
+
+.JordanListaItem__tag--deletar {
+  background-color: rgb(93, 3, 3) !important;
 }

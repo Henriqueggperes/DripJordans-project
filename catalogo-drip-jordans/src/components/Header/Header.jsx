@@ -3,7 +3,12 @@ import { ActionMode } from "constants/index";
 import "components/Header/Header.css";
 import sacola from "assets/icons/sacola.png";
 
-export default function Header({ createJordan, updateJordan, mode }) {
+export default function Header({
+  createJordan,
+  updateJordan,
+  mode,
+  deleteJordan,
+}) {
   return (
     <header>
       <div className="HeaderTitle--container">
@@ -32,6 +37,15 @@ export default function Header({ createJordan, updateJordan, mode }) {
         <span className="Jordan__icone-Update Icone">
           <b>UPDATE JORDAN</b>
         </span>
+      </button>
+      <button
+        type="button"
+        className={`Opcoes__jordan Jordan ${
+          mode === ActionMode.DELETAR && "Jordan--deletar"
+        }`}
+        onClick={() => deleteJordan()}
+      >
+        <span className="Jordan__icone-Update Icone"> DELETE JORDAN</span>
       </button>
       <div className="HeaderIcon--container">
         <img

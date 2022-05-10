@@ -91,9 +91,15 @@ header {
   font-weight: 0;
   font-size: x-large;
   transform: translateY(3px);
+  border-style: solid;
+  border-width: 2px;
 
 }
 .Jordan--ativa {
     background: rgb(0, 0, 0);
     color: #ffffff;
+}
+.Jordan--deletar {
+  background: rgb(81, 20, 20);
+  color: #ffffff;
 }

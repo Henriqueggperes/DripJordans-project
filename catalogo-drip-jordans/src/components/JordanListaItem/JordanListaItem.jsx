@@ -32,13 +32,19 @@ function JordanListaItem({
 
   const badgeAction = (canRender) => {
     if (canRender)
-      return <span className="JordanListaItem__tag"> {mode} </span>;
+      return <span className={`JordanListaItem__tag ${mode === ActionMode.DELETAR && 'JordanListaItem__tag--deletar'}`}> {mode} </span>;
   };
 
   return (
-    <div className={`JordanListaItem ${mode !== ActionMode.NORMAL && 'JordanListaItem--disable'}`} onClick={() => clickItem(jordan.id)}>
+    <div className=
+    {`JordanListaItem 
+    ${mode !== ActionMode.NORMAL && 'JordanListaItem--disable'}
+    ${mode === ActionMode.DELETAR && 'JordanListaItem--deletar'}`}
+     onClick={() => clickItem(jordan.id)}>
+    
       {badgeCounter(quantidadeSelecionada[index], index)}
       {badgeAction(mode != ActionMode.NORMAL)}
+    
       <div>
         <div className="JordanListaItem__titulo">{jordan.titulo}</div>
         <div className="JordanListaItem__preco">

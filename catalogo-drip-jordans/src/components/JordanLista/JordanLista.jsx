@@ -6,7 +6,7 @@ import JordanDetalhesModal from "components/JordanDetalhesModal/JordanDetalhesMo
 import JordanListaItem from "components/JordanListaItem/JordanListaItem";
 import "components/JordanLista/JordanLista.css";
 
-function JordanLista({ jordanCriado, mode, updateJordan, deleteJordan, jordanEditado }) {
+function JordanLista({ jordanCriado, mode, updateJordan, deleteJordan, jordanEditado, jordanRemovido }) {
   const [jordans, setJordan] = useState([]);
   const [jordanSelecionado, setJordanSelecionado] = useState({});
   const [jordanModal, setJordanModal] = useState(false);
@@ -41,23 +41,20 @@ function JordanLista({ jordanCriado, mode, updateJordan, deleteJordan, jordanEdi
   };
   useEffect(() => {
     getLista();
-  }, [jordanEditado]);
+  }, [jordanEditado,jordanRemovido,jordanCriado]);
 
   const adicionaJordanNaLista = useCallback( 
     (jordan) => {
     const lista = [...jordans, jordan];
     setJordan(lista);
-  
-  })[jordans];
-
-  useEffect(() => {
     if (
       jordanCriado &&
       !jordans.map(({ id }) => id).includes(jordanCriado.id)
     ) {
       adicionaJordanNaLista(jordanCriado);
     }
-  }, [adicionaJordanNaLista, jordanCriado, jordans]);
+  }, [jordanCriado, jordans]);
+  
 
 
   const badgeCounter = (canRender, index) =>

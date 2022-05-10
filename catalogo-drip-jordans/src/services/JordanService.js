@@ -34,7 +34,7 @@ export const JordanService = {
 
   deleteById: (id) =>
     fetch(Api.deleteBootById(id), { method: "DELETE" }).then(
-      parseTransformLista
+      parseResponse
     ),
 
   createJordan: (jordan) =>
