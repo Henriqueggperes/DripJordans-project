@@ -1,5 +1,5 @@
 const JordanContext =  {
-jordanEndpoint: () => `${Api.baseUrl}/jordans/all-boots`,
+jordanEndpoint: () => `${Api.baseUrl}/jordans`,
 jordanLista: () => `${JordanContext.jordanEndpoint()}/all-boots`,
 jordanById: (id) => `${JordanContext.jordanEndpoint()}/find-boot/${id}`,
 createJordan: () => `${JordanContext.jordanEndpoint()}/create-boot`,
@@ -8,7 +8,7 @@ deleteBootById: (id)=> `${JordanContext.jordanEndpoint()}/delete-boot/${id}`
 }
 
 export const Api = {
-    baseUrl: process.env.REACT_APP_API_URL,
+    baseUrl: "http://localhost:10000",
     ...JordanContext,
 }
 
