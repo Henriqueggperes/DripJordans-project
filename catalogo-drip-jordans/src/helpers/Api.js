@@ -1,5 +1,5 @@
 const JordanContext =  {
-jordanEndpoint: () => `${Api.baseUrl}/jordans`,
+jordanEndpoint: () => `${Api.baseUrl}/jordans/all-boots`,
 jordanLista: () => `${JordanContext.jordanEndpoint()}/all-boots`,
 jordanById: (id) => `${JordanContext.jordanEndpoint()}/find-boot/${id}`,
 createJordan: () => `${JordanContext.jordanEndpoint()}/create-boot`,
