@@ -8,7 +8,7 @@ deleteBootById: (id)=> `${JordanContext.jordanEndpoint()}/delete-boot/${id}`
 }
 
 export const Api = {
-    baseUrl: "http://localhost:10000",
+    baseUrl: process.env.REACT_APP_API_URL,
     ...JordanContext,
 }
 
